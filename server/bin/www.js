@@ -5,7 +5,7 @@
 import app from '../app.js';
 import debugMiddleware from 'debug';
 const debug = debugMiddleware('server:server');
-import conn from '../conn.js';
+import connection from '../conn.js';
 import http from 'http';
 import path from 'path';
 
@@ -87,10 +87,15 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-  
+server.listen(port,async ()=>{
+  try{
+    await conn;
+    console.log('conneccted to mongodb');
+    } catch(e){
+      console.error('error connecting to mongodb');
+    }
     console.log("server listening on port " + port + '!')
-
+});
 
 server.on('error', onError);
 server.on('listening', onListening);
