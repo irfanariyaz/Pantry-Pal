@@ -89,7 +89,7 @@ var server = http.createServer(app);
 
 server.listen(port,async ()=>{
   try{
-    await conn;
+    await connection;
     console.log('conneccted to mongodb');
     } catch(e){
       console.error('error connecting to mongodb');
