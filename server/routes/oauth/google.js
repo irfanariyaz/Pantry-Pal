@@ -22,6 +22,8 @@ const google_redirect = process.env.GOOGLE_REDIRECT;
  * @param res {response} redirects user
  */
 router.get("/", (req, res) => {
+
+  console.log("reached /");
   const authRedirect =
     "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" +
     google_redirect +
@@ -30,6 +32,7 @@ router.get("/", (req, res) => {
     "&scope=" +
     google_scope +
     "&access_type=offline";
+    console.log("auth",authRedirect);
   res.redirect(authRedirect);
 });
 
@@ -48,6 +51,7 @@ router.get("/", (req, res) => {
  *  is successful, push the token into the next router module.
  */
 router.get("/callback", async (req, res, next) => {
+  console.log("reached callback");
   const code = req.query.code;
   console.log("code", code);
 
@@ -87,6 +91,8 @@ router.get("/callback", async (req, res, next) => {
  * is successful, push the users data to the controller.
  */
 router.get("/callback", async (req, res, next) => {
+  console.log("reached callback data");
+  console.log("req.google_tokens", req.google_tokens);
   await data_client(req.google_tokens)
     .then((response) => {
       req.google = {};
