@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
 
   console.log("reached /");
   const authRedirect =
-    "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=" +
+    "https://accounts.google.com/o/oauth2/v2/auth?redirect_uri="+
     google_redirect +
     "&prompt=consent&response_type=code&client_id=" +
     google_ID +

@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   session({
-    secret: process.env.SECRET, //Used to sign sessionIDs. Will change later. -Tyler
+    secret: "testsign", //Used to sign sessionIDs. Will change later. -Tyler
     resave: false,
     saveUninitialized: true,
     cookie: {
