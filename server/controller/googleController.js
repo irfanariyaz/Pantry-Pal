@@ -51,7 +51,7 @@ const create_google_user = async function(req, res){
                 //Save fridge to DB.
                 await fridge.save().then(() => {
                     req.session.userID = user._id;
-                    res.redirect("http://localhost:3000");
+                    res.redirect("https://pantry-pal-68a0.onrender.com");
                 }).catch((error) => {
                     console.log(fridge);
                     console.error(error, "HERE");
@@ -61,7 +61,7 @@ const create_google_user = async function(req, res){
             const user = checkForDupe[0];
             req.session.userID = user._id;
             console.log("userId",req.session);
-            res.redirect("http://localhost:3000");
+            res.redirect("https://pantry-pal-68a0.onrender.com");
         }
             
 
