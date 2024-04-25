@@ -18,6 +18,7 @@ function Home() {
             {/*Instead of an a tag, this would probably just be a link to the login page.*/}
             <a
               href="https://pantry-pal-68a0.onrender.com/auth/google"
+              // href="http://localhost:3001/auth/google"
               className="inline-flex items-center justify-center pe-5 py-3 mr-3 text-base font-medium text-center text-text-green-600 rounded-lg focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800"
             >
               Start Simplifying

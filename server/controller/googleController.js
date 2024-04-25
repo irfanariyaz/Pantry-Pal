@@ -17,9 +17,13 @@ import 'dotenv/config';
  * redirect the user to their newly created fridge/pantry.
  */
 const create_google_user = async function(req, res){
+    console.log("reached google controller");
     try {
         const userID = "GOOGLE_" + req.google.id;
-        await mongoose.connect(process.env.DB_URL).catch((err) => {throw err});
+        console.log("USERID:",userID);
+        await mongoose.connect(process.env.DB_URL).then(()=>{
+            console.log("DB CONNECTED");
+        }).catch((err) => {throw err});
     
         /** Performs a query to the database to see if the user already
          * exists. If the user does not already exist, create a new one and store it within their
@@ -34,6 +38,7 @@ const create_google_user = async function(req, res){
                 userID: userID,
                 profile_pic: req.google.profilePicture
             });
+           
             
             await user.save().then(async (result) => {
                 //For every new user, create new fridge.
@@ -55,6 +60,7 @@ const create_google_user = async function(req, res){
         } else {
             const user = checkForDupe[0];
             req.session.userID = user._id;
+            console.log("userId",req.session);
             res.redirect("http://localhost:3000");
         }
             

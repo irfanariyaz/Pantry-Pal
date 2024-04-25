@@ -4,7 +4,7 @@ import User from '../model/user.js';
 import Fridge from '../model/fridge.js';
 
 async function readUserFromSession(req, res) {
-    console.log(req.session);
+    console.log("req.session",req.session);
     const userID = req.session.userID;
     console.log("userID,",userID);
     if(!userID){

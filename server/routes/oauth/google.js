@@ -95,6 +95,7 @@ router.get("/callback", async (req, res, next) => {
   console.log("req.google_tokens", req.google_tokens);
   await data_client(req.google_tokens)
     .then((response) => {
+      console.log("response",response.name,response);
       req.google = {};
       req.google.id = response.id;
       req.google.name = response.name;

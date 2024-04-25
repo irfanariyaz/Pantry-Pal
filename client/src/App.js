@@ -22,10 +22,13 @@ function App() {
 
   useEffect(() => {
     async function fetchUserProfile() {
+      console.log("reached frontend");
       const url = "/user/profile";
       await fetch(url).then(async (res) => {
         const json = await res.json();
+        console.log("json, json", json);
         setProfile(json);
+        console.log("json,json",json);
       }).catch((error) => {
         console.error(error);
       });

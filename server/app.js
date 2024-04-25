@@ -11,6 +11,7 @@ import fridgeRouter from "./routes/fridge/fridge.js";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import dotenv from "dotenv";
+dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -31,7 +32,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       path: "/",
-      httpOnly: true,
+      httpOnly: false,
       secure: false,
       maxAge: 1000 * 60 * 60 * 24,
     }, 
