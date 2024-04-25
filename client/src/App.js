@@ -24,7 +24,13 @@ function App() {
     async function fetchUserProfile() {
       console.log("reached frontend");
       const url = "/user/profile";
-      await fetch(url).then(async (res) => {
+      await fetch(url,{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }).then(async (res) => {
         const json = await res.json();
         console.log("json, json", json);
         setProfile(json);
