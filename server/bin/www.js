@@ -4,8 +4,7 @@
 
 import app from '../app.js';
 import debugMiddleware from 'debug';
-const debug = debugMiddleware('server:server');
-import connection from '../conn.js';
+const debug = debugMiddleware('express-template:server');
 import http from 'http';
 import path from 'path';
 
@@ -74,7 +73,7 @@ const onListening = () => {
   debug('Listening on ' + bind);
 }
 
-const port = normalizePort(process.env.EXPRESS_PORT || '3001');
+const port = normalizePort(process.env.PORT || "8080");
 app.set('port', port);
 
 /**
@@ -87,15 +86,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port,async ()=>{
-  try{
-    await connection;
-    console.log('conneccted to mongodb');
-    } catch(e){
-      console.error('error connecting to mongodb');
-    }
-    console.log("server listening on port " + port + '!')
-});
-
+server.listen(port);
+console.log("server listening on port " + port + '!')
 server.on('error', onError);
 server.on('listening', onListening);

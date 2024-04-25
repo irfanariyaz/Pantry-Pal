@@ -10,6 +10,7 @@ import { PantryContext } from "./context/PantryContext";
 function Dashboard(props) {
   const fridgeID = props.profile.fridgeID._id;
 
+  console.log("user",props.profile);
   
   const{handleSubmit,recipes,setRecipes,handleCategory,
         setSearchTerm,searchTerm} = useContext(PantryContext);
