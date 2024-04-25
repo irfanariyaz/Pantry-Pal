@@ -61,7 +61,7 @@ const create_google_user = async function(req, res){
             const user = checkForDupe[0];
             req.session.userID = user._id;
             console.log("userId",req.session);
-            res.redirect("https://localhost:3000");
+            res.redirect("http://localhost:3000");
         }
             
 
